@@ -1,0 +1,54 @@
+---
+import { ImOffice } from "react-icons/im";
+import { jobs } from '../data/work';
+import { motion } from 'framer-motion';
+import SectionHeading from './ui/SectionHeading.astro';
+---
+
+<section class="py-24 relative">
+
+<SectionHeading icon={ImOffice} text="Experience" />
+
+<div class="flex flex-col gap-8 relative z-10">
+
+    {jobs.map((job, index) => (
+        <motion.div
+            client:load
+            key={job.company}
+            initial={{ opacity: 0, scale: 0.5 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: index * 0.1 }}
+            className="flex flex-col gap-4 bg-white dark:bg-brand-dark-purple p-6 border dark:border-brand-light-purple border-black rounded-lg relative z-10"
+        >
+            <div class="flex flex-row items-start ">
+
+                <img src={job.logo} alt={job.company} class="w-12 h-12 mr-8" />
+                <div>
+
+                    <h3 class="text-xl font-medium">{job.title}</h3>
+                    <p class="text-sm">{job.company}</p>
+                    <p class="text-sm leading-relaxed mt-4">
+                        {job.description}
+                    </p>
+                    <p class="text-sm mt-4">{job.date}</p>
+                </div>
+            </div>
+            
+        </motion.div>
+    ))}
+    
+    <motion.div 
+    client:load
+    whileInView={{ opacity: 1, height: '100%' }}
+    className="absolute left-[40px] top-0 h-0 w-[2px] bg-black dark:bg-brand-light-purple z-0"
+    initial={{ height: 0 }}
+    animate={{ height: '100%' }}
+    transition={{ duration: .5,  delay: 1 }}
+    />
+    </div>
+</div>
+
+
+</section>
+

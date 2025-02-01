@@ -1,0 +1,17 @@
+---
+interface Props {
+    href: string;
+    text: string;
+    target?: string | '_self' | '_blank' ;
+}
+
+const { href, text, target = '_self' } = Astro.props;
+---
+
+<a 
+    href={href} 
+    target={target}
+    class="px-6 py-3 bg-purple-600 text-white rounded-full text-sm hover:bg-purple-700 transition-colors"
+>
+    {text}
+</a>

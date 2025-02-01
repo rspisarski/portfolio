@@ -1,0 +1,55 @@
+---
+import { ThemeScript } from 'astro-theme-toggle';
+import { Toggle } from 'astro-theme-toggle'
+import { ClientRouter } from 'astro:transitions';
+import ContactInfo from '../components/ContactInfo.astro';
+---
+
+<!doctype html>
+<html lang="en">
+	<head>
+		<ClientRouter />
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<meta name="generator" content={Astro.generator} />
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet" />
+		<title>Richard Pisarski | Frontend Developer</title>
+		<ThemeScript />
+	</head>
+	<body class="py-24">
+		<div class="fixed top-8 right-8">
+			<Toggle style="width: 32px; height: 32px;" />
+		</div>
+		<div class="max-w-screen-md mx-auto px-4">
+			<ContactInfo />
+			<slot />
+		</div>
+	</body>
+</html>
+
+<style>
+	html,
+	body {
+		margin: 0;
+		width: 100%;
+		height: 100%;
+	}
+
+	[data-theme="light"] {
+		background: #ECE9E6;
+		background: -webkit-linear-gradient(to right, #FFFFFF, #ECE9E6); 
+		background: linear-gradient(to right, #FFFFFF, #ECE9E6); 
+		color: #000;
+	}
+
+	[data-theme="dark"] {
+		background: #250544;
+		background: -webkit-linear-gradient(to right, #250544, #18012c); 
+		background: linear-gradient(to right, #250544, #18012c); 
+		color: #FFFFFF;
+	}
+
+</style>

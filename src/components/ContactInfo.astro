@@ -1,0 +1,50 @@
+---
+import { PiGithubLogo } from "react-icons/pi";
+import { CiLinkedin } from "react-icons/ci";
+import { IoMailOutline } from "react-icons/io5";
+import { motion } from "framer-motion";
+---
+
+<header>
+    <motion.div
+    client:load
+    whileInView={{ opacity: 1, y: 0 }}
+    initial={{ opacity: 0, y: 100 }}
+    transition={{ duration: 1 }}
+    viewport={{ once: true }}
+    >
+    <div class="flex flex-col justify-center items-center border-bpb-4 mb-4">
+        <h1 class="text-3xl"><a href="/" class="hover:text-brand-purple dark:hover:text-brand-light-purple transition-colors"><span class="font-bold">Richard</span> Pisasrski</a></h1>
+        <p class="text-sm mt-2 transition-colors">
+            Frontend Developer
+        </p>
+        <p class="inline-flex items-center gap-2 px-3 my-4 text-sm transition-colors">
+            Detroit Metropolitan Area
+        </p>
+
+        <div class="flex items-center gap-6 text-2xl">
+
+        <div class="flex items-center gap-4">
+            <a href="https://github.com/rspisarski" target="_blank" rel="noopener noreferrer" class="hover:text-brand-purple dark:hover:text-brand-light-purple hover:scale-110 transition-all duration-300">
+                <PiGithubLogo />
+            </a>
+            <a href="https://linkedin.com/in/rspisarski" target="_blank" rel="noopener noreferrer" class="hover:text-brand-purple dark:hover:text-brand-light-purple hover:scale-110 transition-all duration-300">
+                <CiLinkedin />
+            </a>
+
+            <a href="mailto:rspisarski@gmail.com" class="hover:text-brand-purple dark:hover:text-brand-light-purple hover:scale-110 transition-all duration-300">
+                <IoMailOutline />
+            </a>
+        </div>
+    </div>
+    </div>
+    </motion.div>
+    <motion.div 
+    client:load
+    viewport={{ once: true }}
+    whileInView={{ opacity: 1, width: '100%' }}
+    initial={{ opacity: 0, width: 0 }}
+    transition={{ duration: 1, delay: 1 }}
+    className="border-b border-black dark:border-brand-light-purple pb-4 mb-4">
+    </motion.div>
+</header>

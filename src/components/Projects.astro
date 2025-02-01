@@ -1,0 +1,49 @@
+---
+import { FaComputer } from "react-icons/fa6";
+import { getCollection } from 'astro:content';
+import { Image } from 'astro:assets';
+import { motion } from 'framer-motion';
+import SectionHeading from './ui/SectionHeading.astro';
+import { scaleInAnimation } from '../utils/animations';
+
+interface Project {
+    data: {
+    title: string;
+    image: string;
+    order: number;
+    skills: string[];
+    };
+
+    slug: string;
+}
+
+const projects = await getCollection('projects');
+---
+<section class="py-24 relative">
+
+    <SectionHeading icon={FaComputer} text="Projects" />
+
+    <div class="flex flex-col gap-12 relative z-10">
+        {projects.sort((a, b) => a.data.order - b.data.order).map((project: Project, index: number) => (
+            <motion.div
+                client:load
+                {...scaleInAnimation.variants}
+                viewport={scaleInAnimation.viewport}
+                whileHover={{ scale: 1.05 }}
+                key={project.slug}
+
+                transition={{ duration: 0.5, delay: index * 0.1 }} >
+                <a href={`/projects/${project.slug}`} class="group relative flex flex-col gap-4 mb-4 border border-black rounded-lg overflow-hidden">
+
+                <Image width={800} height={400} src={project.data.image} alt={project.data.title} class="w-full h-[400px] object-cover object-top" transition:name={`project-image-${project.slug}`} transition:animate="fade" />
+                <div class="absolute inset-0 bg-black/70 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                    <div class="flex flex-col gap-2 p-4 text-white text-center">
+                        <h3 class="text-xl font-medium">{project.data.title}</h3>
+                        <p class="text-sm">{project.data.skills.join(", ")}</p>
+                    </div>
+                    </div>
+            </a>
+            </motion.div>
+        ))}
+    </div>
+</section>

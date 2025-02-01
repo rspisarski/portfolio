@@ -1,7 +1,7 @@
 ---
 title: "Conscious Compass"
 skills: ["WordPress", "Next.js", "Tailwind CSS", "Supabase", "GSAP", "Smartsheet"]
-image: "/src/content/projects/images/cc.png"
+image: "/images/projects/cc.png"
 order: 1
 published: false
 ---

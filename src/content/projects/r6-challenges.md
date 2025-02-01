@@ -1,7 +1,7 @@
 ---
 title: "R6 Challenges"
 skills: ["Next.js", "Tailwind CSS", "Supabase", "Session Handling", "User-Generated Content"]
-image: "/src/content/projects/images/r6-challenges.png"
+image: "/images/projects/r6-challenges.png"
 link: "https://r6challenges.com/"
 order: 3
 ---

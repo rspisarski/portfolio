@@ -1,7 +1,7 @@
 ---
 title: "Unbranded Thoughts"
 skills: ["Next.js", "Tailwind CSS", "Supabase", "Custom CMS", "AI Generated Content", "Branding"]
-image: "/src/content/projects/images/unbranded-thoughts.png"
+image: "/images/projects/unbranded-thoughts.png"
 order: 2
 ---
 

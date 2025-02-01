@@ -3,7 +3,9 @@ import { ImOffice } from "react-icons/im";
 import { jobs } from '../data/work';
 import { motion } from 'framer-motion';
 import SectionHeading from './ui/SectionHeading.astro';
+import { Image } from 'astro:assets';
 ---
+
 
 <section class="py-24 relative">
 
@@ -23,8 +25,9 @@ import SectionHeading from './ui/SectionHeading.astro';
         >
             <div class="flex flex-row items-start ">
 
-                <img src={job.logo} alt={job.company} class="w-12 h-12 mr-8" />
+                <Image src={job.logo} alt={job.company} width={48} height={48} class="mr-8" />
                 <div>
+
 
                     <h3 class="text-xl font-medium">{job.title}</h3>
                     <p class="text-sm">{job.company}</p>

@@ -15,7 +15,7 @@ export default defineConfig({
   vite: {
     build: {
       rollupOptions: {
-        external: ['react', 'react-dom', 'framer-motion']
+        external: ['react', 'react-dom']
       }
     }
   }

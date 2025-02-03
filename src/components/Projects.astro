@@ -17,11 +17,11 @@ interface Project {
     slug: string;
 }
 
-const projects = await getCollection('projects');
+const projects = (await getCollection('projects')).filter(project => project.data.published);
 ---
 <section class="py-24 relative">
 
-    <SectionHeading icon={FaComputer} text="Projects" />
+    <SectionHeading client:load icon={FaComputer} text="Projects" />
 
     <div class="flex flex-col gap-12 relative z-10">
         {projects.sort((a, b) => a.data.order - b.data.order).map((project: Project, index: number) => (

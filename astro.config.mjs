@@ -11,12 +11,5 @@ export default defineConfig({
   ],
   build: {
     assets: 'static'
-  },
-  vite: {
-    build: {
-      rollupOptions: {
-        external: ['react', 'react-dom']
-      }
-    }
   }
 });

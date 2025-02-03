@@ -11,5 +11,16 @@ export default defineConfig({
   ],
   build: {
     assets: 'static'
+  },
+  vite: {
+    ssr: {
+      noExternal: ['react-icons']
+    },
+    resolve: {
+      preserveSymlinks: true
+    },
+    optimizeDeps: {
+      exclude: ['@astrojs/react']
+    }
   }
 });

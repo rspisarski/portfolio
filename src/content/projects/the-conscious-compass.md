@@ -1,9 +1,9 @@
 ---
+published: false
 title: "Conscious Compass"
 skills: ["WordPress", "Next.js", "Tailwind CSS", "Supabase", "GSAP", "Smartsheet"]
 image: "/images/projects/cc.png"
 order: 1
-published: true
 ---
 
 The Conscious Compass is a full-stack web application built with Next.js and Supabase, designed as a sophisticated sales assessment tool for Antenna Group. The application leverages server-side rendering (SSR) and static site generation (SSG) capabilities of Next.js to deliver optimal performance, while Supabase provides the backend infrastructure including authentication, database management, and real-time updates.

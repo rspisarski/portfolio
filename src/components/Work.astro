@@ -1,15 +1,14 @@
 ---
-import { ImOffice } from "react-icons/im";
 import { jobs } from '../data/work';
 import { motion } from 'framer-motion';
-import SectionHeading from './ui/SectionHeading.astro';
+import SectionHeading from './ui/SectionHeading';
 import { Image } from 'astro:assets';
 ---
 
 
 <section class="py-24 relative">
 
-<SectionHeading client:load icon={ImOffice} text="Experience" />
+<SectionHeading client:load text="Experience" />
 
 <div class="flex flex-col gap-8 relative z-10">
 

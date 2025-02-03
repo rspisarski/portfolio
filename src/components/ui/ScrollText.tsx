@@ -1,9 +1,14 @@
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { useRef } from 'react';
 
-export default function ScrollText({ text }: { text: string }) {
+interface ScrollTextProps {
+    text: string;
+}
+
+export default function ScrollText({ text }: ScrollTextProps) {
     const containerRef = useRef(null);
     const { scrollYProgress } = useScroll({
+
         target: containerRef,
         offset: ["start start", "end end"]
     });

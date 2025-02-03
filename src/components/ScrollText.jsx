@@ -1,5 +1,5 @@
 import { motion, useScroll, useTransform } from 'framer-motion';
-import { useRef, useEffect } from 'react';
+import { useRef } from 'react';
 
 export default function ScrollText({ text }) {
     const containerRef = useRef(null);
@@ -14,17 +14,7 @@ export default function ScrollText({ text }) {
         [0, .1, 0.1]
     );
 
-    // Enhanced debug logging
-    useEffect(() => {
-        console.log("Component mounted");
-        console.log("Container ref:", containerRef.current);
-        
-        const unsubscribe = scrollYProgress.on("change", (latest) => {
-            console.log("Scroll progress:", latest);
-            console.log("Container bounds:", containerRef.current?.getBoundingClientRect());
-        });
-        return () => unsubscribe();
-    }, [scrollYProgress]);
+
 
     return (
         <motion.div

@@ -20,15 +20,12 @@ import Footer from '../components/Footer.astro';
 		<title>Richard Pisarski | Frontend Developer</title>
 		<ThemeScript />
 	</head>
-	<body class="py-24">
+	<body>
 		<div class="fixed top-8 right-8">
 			<Toggle style="width: 32px; height: 32px;" />
 		</div>
-		<div class="max-w-screen-md mx-auto px-4">
-			<ContactInfo />
-			<slot />
-			<Footer />
-		</div>
+		<slot />
+		<Footer />
 	</body>
 </html>
 

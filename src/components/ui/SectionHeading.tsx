@@ -10,10 +10,11 @@ export default function SectionHeading({text }: SectionHeadingProps) {
     return (
         <div>
         <motion.h2
-            className="text-2xl font-bold mb-12 flex flex-row gap-4 items-center"
+            className="text-2xl md:text-3xl font-bold mb-12 flex flex-row gap-4 items-center"
             viewport={{ once: true }}
             transition={{ duration: .5, ease: 'easeOut' }}
             {...slideUpAnimation.variants}
+
 
         >
             {text}

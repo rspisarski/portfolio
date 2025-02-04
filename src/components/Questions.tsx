@@ -1,6 +1,7 @@
 import { categories, getAllQuestions } from '../data/questions';
 import { useState, useEffect } from 'react';
 import { AiOutlineLike, AiOutlineDislike, AiFillLike, AiFillDislike } from 'react-icons/ai';
+import { HiMenu, HiX } from 'react-icons/hi';
 import { getLocalStorage, setLocalStorage } from '../utils/localStorage';
 import { motion, AnimatePresence } from 'framer-motion';
 
@@ -20,6 +21,9 @@ export default function Questions() {
     const [currentQuestionId, setCurrentQuestionId] = useState<string>(allQuestions[0].id);
     const [questionStatuses, setQuestionStatuses] = useState<Record<string, QuestionStatus>>({});
     const [direction, setDirection] = useState(0);
+    const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+    const [isClient, setIsClient] = useState(false);
+    const [isMobile, setIsMobile] = useState(false);
 
     // Load saved statuses after mount
     useEffect(() => {
@@ -57,13 +61,37 @@ export default function Questions() {
         }
     }, [currentQuestionId]);
 
+    // Handle initial client-side setup and resize events
+    useEffect(() => {
+        const checkMobile = () => {
+            const isMobileView = window.innerWidth < 768;
+            setIsMobile(isMobileView);
+            if (!isMobileView) {
+                setIsMobileMenuOpen(false);
+            }
+        };
+
+        // Set initial states
+        setIsClient(true);
+        checkMobile();
+
+        // Add resize listener
+        window.addEventListener('resize', checkMobile);
+        
+        return () => window.removeEventListener('resize', checkMobile);
+    }, []);
+
     const handleQuestionChange = (newQuestionId: string) => {
-        const currentIndex = allQuestions.findIndex(q => q.id === currentQuestionId);
-        const newIndex = allQuestions.findIndex(q => q.id === newQuestionId);
+        const orderedQuestions = categories.flatMap(category => 
+            category.questions.filter(q => q.id === newQuestionId)
+        );
+        
+        const currentIndex = orderedQuestions.findIndex(q => q.id === currentQuestionId);
+        const newIndex = orderedQuestions.findIndex(q => q.id === newQuestionId);
         setDirection(newIndex > currentIndex ? 1 : -1);
         setCurrentQuestionId(newQuestionId);
-        // Clear manually opened category when changing questions
         setManuallyOpenCategory(null);
+        setIsMobileMenuOpen(false);
     };
 
     const handleRating = (questionId: string, rating: 'positive' | 'negative') => {
@@ -114,16 +142,53 @@ export default function Questions() {
 
     return (
         <div className="flex h-screen relative">
-        
-            <nav className="w-[300px] h-screen flex flex-col items-start justify-start bg-black/20 p-4 overflow-y-auto">
-                <div className="flex flex-col h-full">
-                    <div className="flex flex-col mb-24">
-                        <h1 className="text-4xl"><a href="/" className="hover:text-brand-purple dark:hover:text-brand-light-purple transition-colors"><span className="font-bold">Richard</span> Pisasrski</a></h1>
+            {/* Mobile Menu Button */}
+            <button
+                onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+                className="fixed top-4 left-4 z-50 p-2 bg-white/10 backdrop-blur-sm rounded-md md:hidden"
+            >
+                {isMobileMenuOpen ? (
+                    <HiX className="w-6 h-6 text-white" />
+                ) : (
+                    <HiMenu className="w-6 h-6 text-white" />
+                )}
+            </button>
+
+            {/* Overlay */}
+            {isMobileMenuOpen && (
+                <div 
+                    className="fixed inset-0 bg-brand-dark-purple/20 backdrop-blur-sm z-30 md:hidden"
+                    onClick={() => setIsMobileMenuOpen(false)}
+                />
+            )}
+            
+            {/* Sidebar Navigation */}
+            <motion.nav 
+                className={`
+                    fixed md:relative w-[300px] h-screen 
+                    flex flex-col items-start justify-start 
+                    bg-brand-dark-purple/90 p-4 overflow-y-auto z-40
+                    md:translate-x-0
+                    ${isMobileMenuOpen ? 'translate-x-0' : '-translate-x-full'}
+                `}
+                initial={false}
+                animate={{ 
+                    x: isClient ? (isMobile ? (isMobileMenuOpen ? 0 : -300) : 0) : 0,
+                    transition: { type: "spring", stiffness: 300, damping: 30 }
+                }}
+            >
+                <div className="flex flex-col h-full w-full">
+                    <div className="flex flex-col mt-16 md:mt-0 mb-24">
+                        <h1 className="text-4xl">
+                            <a href="/" className="hover:text-brand-purple dark:hover:text-brand-light-purple transition-colors">
+                                <span className="font-bold">Richard</span> Pisasrski
+                            </a>
+                        </h1>
                         <p className="text-sm mt-2 transition-colors">
-                        Frontend Developer
+                            Frontend Developer
                         </p>
                         <p className="inline-flex items-center gap-2 text-sm transition-colors">
-                        Detroit Metropolitan Area
+                            Detroit Metropolitan Area
                         </p>
                     </div>
                     
@@ -132,7 +197,7 @@ export default function Questions() {
                             <div key={category.id} className="space-y-2">
                                 <button 
                                     onClick={() => toggleCategory(category.id)}
-                                    className="text-brand-light-purple font-medium flex items-center w-full hover:text-brand-light-purple/80 transition-colors"
+                                    className="text-brand-white font-medium flex items-center w-full hover:text-brand-light-purple/80 transition-colors"
                                 >
                                     <span className="mr-2">
                                         {isCategoryOpen(category.id) ? '▼' : '▶'}
@@ -185,8 +250,16 @@ export default function Questions() {
                         Reset Progress
                     </button>
                 </div>
-            </nav>            
-            <main className="flex-1 flex-col h-screen overflow-y-auto p-8 flex items-center justify-center relative">
+            </motion.nav>            
+
+            {/* Main Content */}
+            <main className={`
+                flex-1 flex-col h-screen overflow-y-auto p-8 
+                flex items-center justify-center relative
+                transition-[margin,width] duration-300
+                md:ml-0 md:w-[calc(100%-300px)]
+                w-full ml-0
+            `}>
                 <AnimatePresence mode="wait" custom={direction}>
                     <motion.div
                         key={currentQuestionId}
@@ -199,7 +272,7 @@ export default function Questions() {
                             x: { type: "spring", stiffness: 400, damping: 35 },
                             opacity: { duration: 0.15 }
                         }}
-                        className="max-w-2xl w-full"
+                        className="w-full max-w-2xl mx-auto px-4 md:px-0"
                     >
                         <h2 className="text-2xl font-semibold mb-4">{currentQuestion?.question}</h2>
                         <p className="mb-6">{currentQuestion?.answer}</p>

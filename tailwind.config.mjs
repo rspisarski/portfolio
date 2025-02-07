@@ -8,9 +8,13 @@ export default {
 			},
 			colors: {
 				brand: {
-					'light-purple': '#8847c9',
-					'purple': '#4d1486',
-					'dark-purple': '#18012c',
+					'light-purple': '#2d1e39',
+					'purple': '#9b43dd',
+					'dark-purple': '#160e1c',
+					'dark-theme-bg': '#110C15',
+					'dark-theme-text': '#fefbff',
+					'light-theme-bg': '#fefbff',
+					'light-theme-text': '#110C15',
 				},
 			},
 		},

@@ -1,17 +1,51 @@
 ---
 interface Props {
-    href: string;
-    text: string;
-    target?: string | '_self' | '_blank' ;
+    href?: string;
+    className?: string;
+    variant?: 'primary' | 'success' | 'danger';
+    size?: 'sm' | 'md' | 'lg';
 }
 
-const { href, text, target = '_self' } = Astro.props;
+const { 
+    href, 
+    className = '',
+    variant = 'primary',
+    size = 'md'
+} = Astro.props;
+
+const baseStyles = "border rounded-md transition-colors duration-200";
+
+const variants = {
+    primary: `
+        dark:bg-brand-dark-purple dark:border-brand-light-purple dark:text-brand-purple 
+        bg-white border-brand-light-purple text-brand-dark-purple 
+        hover:bg-brand-purple hover:text-brand-dark-theme-text hover:border-brand-purple 
+        dark:hover:bg-brand-purple dark:hover:text-brand-dark-theme-text dark:hover:border-brand-purple
+    `,
+    success: "bg-green-500 text-white border-green-500",
+    danger: "bg-red-500 text-white border-red-500"
+};
+
+const sizes = {
+    sm: "px-2 py-1 text-sm",
+    md: "px-4 py-2",
+    lg: "px-6 py-3 text-lg"
+};
 ---
 
-<a 
-    href={href} 
-    target={target}
-    class="px-6 py-3 bg-purple-600 text-white rounded-full text-sm hover:bg-purple-700 transition-colors"
+{
+href ? (
+<a
+    href={href}
+    class:list={[baseStyles, variants[variant], sizes[size], className]}
 >
-    {text}
+    <slot />
 </a>
+) : (
+<button
+    class:list={[baseStyles, variants[variant], sizes[size], className]}
+>
+    <slot />
+</button>
+)
+} 

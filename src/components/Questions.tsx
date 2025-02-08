@@ -316,7 +316,7 @@ export default function Questions() {
                 flex-1 flex-col h-screen overflow-y-auto p-8 
                 flex items-center justify-center relative
                 transition-[margin,width] duration-300
-                ${!showIntro ? 'md:ml-0 md:w-[calc(100%-300px)]' : 'w-full'}
+                ${!showIntro ? 'md:ml-0 md:w-[calc(100%-340px)]' : 'w-full'}
                 w-full ml-0
             `}>
                 {showIntro ? (

@@ -37,6 +37,18 @@ export default function Questions() {
     const [isMobile, setIsMobile] = useState(false);
     const [showIntro, setShowIntro] = useState(true);
 
+    // Move the mobile menu styles to a computed class string
+    const mobileMenuClasses = `
+        fixed md:relative w-[340px] h-screen border-r border-black/10 dark:border-brand-light-purple 
+        flex flex-col items-start justify-start 
+        dark:bg-brand-dark-purple/90 p-4 overflow-y-auto z-40
+        bg-white
+        md:translate-x-0
+        transition-transform duration-300
+        ${!isClient ? '-translate-x-full' : ''} // Hide by default until client-side JS runs
+        ${isMobileMenuOpen ? 'translate-x-0' : '-translate-x-full'}
+    `;
+
     // Load saved statuses and determine if intro should be shown
     useEffect(() => {
         const saved = getLocalStorage('questionStatuses');
@@ -179,20 +191,22 @@ export default function Questions() {
 
     return (
         <div className="flex h-screen relative">
-            {/* Mobile Menu Button */}
-            <button
-                onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-                className="fixed top-4 left-4 z-50 p-2 bg-white/10 backdrop-blur-sm rounded-md md:hidden"
-            >
-                {isMobileMenuOpen ? (
-                    <HiX className="w-6 h-6 text-white" />
-                ) : (
-                    <HiMenu className="w-6 h-6 text-white" />
-                )}
-            </button>
+            {/* Only show mobile menu button after client-side hydration */}
+            {isClient && (
+                <button
+                    onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+                    className="fixed top-4 left-4 z-50 p-2 bg-white/10 backdrop-blur-sm rounded-md md:hidden"
+                >
+                    {isMobileMenuOpen ? (
+                        <HiX className="w-6 h-6 text-white" />
+                    ) : (
+                        <HiMenu className="w-6 h-6 text-white" />
+                    )}
+                </button>
+            )}
 
-            {/* Overlay */}
-            {isMobileMenuOpen && (
+            {/* Only show overlay after client-side hydration */}
+            {isClient && isMobileMenuOpen && (
                 <div 
                     className="fixed inset-0 bg-brand-dark-purple/20 backdrop-blur-sm z-30 md:hidden"
                     onClick={() => setIsMobileMenuOpen(false)}
@@ -202,19 +216,10 @@ export default function Questions() {
             {/* Sidebar Navigation - Only show when not in intro */}
             {!showIntro && (
                 <motion.nav 
-                    className={`
-                        fixed md:relative w-[340px] h-screen border-r border-black/10 dark:border-brand-light-purple 
-                        flex flex-col items-start justify-start 
-                        dark:bg-brand-dark-purple/90 p-4 overflow-y-auto z-40
-                        bg-white
-                        md:translate-x-0
-                        ${isMobileMenuOpen ? 'translate-x-0' : '-translate-x-full'}
-
-
-                    `}
+                    className={mobileMenuClasses}
                     initial={false}
                     animate={{ 
-                        x: isClient ? (isMobile ? (isMobileMenuOpen ? 0 : -300) : 0) : 0,
+                        x: isClient ? (isMobile ? (isMobileMenuOpen ? 0 : -340) : 0) : -340,
                         transition: { type: "spring", stiffness: 300, damping: 30 }
                     }}
                 >

@@ -195,13 +195,15 @@ export default function Questions() {
             {isClient && (
                 <button
                     onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-                    className="fixed top-4 left-4 z-50 p-2 bg-white/10 backdrop-blur-sm rounded-md md:hidden"
+                    className="fixed top-4 left-4 z-50 p-2 bg-brand-dark-theme-bg/10 dark:bg-brand-purple/10 backdrop-blur-sm rounded-md md:hidden"
                 >
                     {isMobileMenuOpen ? (
-                        <HiX className="w-6 h-6 text-white" />
+                        <HiX className="w-6 h-6 text-brand-light-theme-text dark:text-brand-dark-theme-text" />
                     ) : (
-                        <HiMenu className="w-6 h-6 text-white" />
+                        <HiMenu className="w-6 h-6 text-brand-light-theme-text dark:text-brand-dark-theme-text" />
                     )}
+
+
                 </button>
             )}
 

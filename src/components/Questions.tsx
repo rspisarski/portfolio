@@ -229,7 +229,7 @@ export default function Questions() {
                         <div className="flex flex-col mt-16 md:mt-0 mb-24">
                             <h1 className="text-4xl">
                                 <a href="/" className="hover:text-brand-purple dark:hover:text-green-500 transition-colors">
-                                    <span className="font-bold">Richard</span> Pisasrski
+                                    <span className="font-bold">Richard</span> Pisarski
                                 </a>
                             </h1>
                             <p className="text-sm mt-2 transition-colors">

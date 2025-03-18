@@ -7,9 +7,6 @@ export const jobs = [
         description: "Led WordPress development initiatives, creating custom themes and a documented integration system. Spearheaded the development of a full-stack sales qualification tool using Next.js and Supabase, featuring comprehensive workflow management and admin capabilities. Implemented secure API integrations and responsive interfaces using modern technologies like Tailwind CSS.",
         logo: "/images/work/antenna_group_logo.jpg",
     },
-
-
-
     {
         title: "Frontend Developer",
         company: "Momentum",

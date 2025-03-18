@@ -1,5 +1,5 @@
 ---
-published: false
+published: true
 title: "Conscious Compass"
 skills: ["WordPress", "Next.js", "Tailwind CSS", "Supabase", "GSAP", "Smartsheet"]
 image: "/images/projects/cc.png"

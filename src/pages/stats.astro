@@ -1,0 +1,25 @@
+---
+import Work from '../components/Work.astro';
+import Layout from '../layouts/Layout.astro';
+import Projects from '../components/Projects.astro';
+import Interview from '../components/Interview.astro';
+import ContactInfo from '../components/ContactInfo.astro';
+import Footer from '../components/Footer.astro';
+---
+
+<Layout>
+	<div class="flex flex-col min-h-screen">
+		<main class="overflow-x-hidden pt-24 flex-grow">
+			<div class="max-w-screen-md mx-auto px-4">
+				<ContactInfo />
+				<div class="flex flex-col gap-4">
+					<img src="https://streak-stats.demolab.com?user=rspisarski&theme=default&hide_border=true" alt="rspisarski's GitHub Stats" />
+					<img src="https://github-readme-stats.vercel.app/api?username=rspisarski&theme=default&show_icons=true&hide_border=true&count_private=true" alt="rspisarski's GitHub Stats" />
+					<img src="https://github-readme-stats.vercel.app/api/top-langs/?username=rspisarski&theme=default&hide_border=true&layout=compact" alt="rspisarski's GitHub Stats" />
+				</div>
+			</div>
+		</main>
+		<Footer />
+	</div>
+</Layout>
+

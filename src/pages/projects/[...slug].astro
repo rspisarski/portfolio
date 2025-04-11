@@ -4,7 +4,7 @@ import Layout from '../../layouts/Layout.astro';
 import PrimaryButton from '../../components/ui/PrimaryButton.astro';
 import { AiOutlineRollback } from "react-icons/ai";
 import { Image } from 'astro:assets';
-
+import Footer from '../../components/Footer.astro';
 
 export async function getStaticPaths() {
     const projects = await getCollection('projects');
@@ -22,6 +22,7 @@ interface Project {
     image: string;
     skills: string[];
     link: string;
+    github: string;
     };
     slug: string;
     render: () => Promise<{ Content: any }>;
@@ -29,24 +30,37 @@ interface Project {
 
 const { project } = Astro.props as { project: Project };
 const { Content } = await project.render();
+
 ---
 <Layout title={project.data.title}>
-
-    <main class="container mx-auto px-4 py-12">
+    <main class="max-w-screen-lg mx-auto px-4 py-12">
     
         <div class="mb-12">
-            <a href="/" class="text-sm text-brand-light-purple hover:text-brand-purple dark:hover:text-brand-light-purple inline-flex flex-row items-center gap-2 scale-100 hover:scale-105 transition-all duration-300"><AiOutlineRollback /> Go Back</a>
+            <a href="/" class="text-sm text-brand-light-purple dark:text-brand-purple hover:text-brand-purple dark:hover:text-brand-light-purple inline-flex flex-row items-center gap-2 scale-100 hover:scale-105 transition-all duration-300"><AiOutlineRollback /> Go Back</a>
         </div>
 
 
-        <div class="flex justify-between items-center gap-4 mb-8">
+        <div class="flex justify-between items-center gap-4 mb-12">
             <h1 class="text-4xl font-bold">{project.data.title}</h1>
-            {project.data.link && <PrimaryButton href={project.data.link} target="_blank" text="View Project" />}
+            <div class="flex items-center gap-3">
+                {project.data.github && (
+                    <div class="flex gap-2">
+                        <a href={`https://github.com/${project.data.github}`} target="_blank" rel="noopener noreferrer">
+                            <img src={`https://img.shields.io/github/stars/${project.data.github}.svg`} alt="GitHub stars" />
+                        </a>
+                        <a href={`https://github.com/${project.data.github}/fork`} target="_blank" rel="noopener noreferrer">
+                            <img src={`https://img.shields.io/github/forks/${project.data.github}.svg`} alt="GitHub forks" />
+                        </a>
+                    </div>
+                )}
+                {project.data.link && <PrimaryButton href={project.data.link} target="_blank">View Project</PrimaryButton>}
+            </div>
         </div>
+            
         <Image 
 
-            class="w-full h-[400px] object-cover object-top mb-8" 
-            width={1000}
+            class="w-full h-auto object-contain mb-12 mx-auto rounded-lg overflow-hidden" 
+            width={500}
             height={400}
             src={project.data.image} 
             alt={project.data.title} 
@@ -65,4 +79,5 @@ const { Content } = await project.render();
             <Content />
         </div>
     </main>
+    <Footer />
 </Layout> 

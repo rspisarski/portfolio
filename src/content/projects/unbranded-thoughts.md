@@ -3,7 +3,7 @@ published: true
 title: "Unbranded Thoughts"
 skills: ["Next.js", "Tailwind CSS", "Supabase", "Custom CMS", "AI Generated Content", "Branding"]
 image: "/images/projects/unbranded-thoughts.png"
-order: 2
+order: 4
 ---
 
 Unbranded Thoughts is a sophisticated personal web blog built on a modern tech stack featuring Next.js for server-side rendering and static site generation, Supabase for backend services, and Tailwind CSS for responsive design. The application is deployed on Vercel, leveraging its edge network for optimal global performance. The platform features a custom-built CMS that allows for seamless content management and editorial workflows.

@@ -228,7 +228,7 @@ export default function Questions() {
                     <div className="flex flex-col h-full w-full">
                         <div className="flex flex-col mt-16 md:mt-0 mb-24">
                             <h1 className="text-4xl">
-                                <a href="/" className="hover:text-brand-purple dark:hover:text-green-500 transition-colors">
+                                <a href="/" className="hover:text-brand-purple dark:hover:text-brand-purple transition-colors">
                                     <span className="font-bold">Richard</span> Pisarski
                                 </a>
                             </h1>
@@ -338,7 +338,7 @@ export default function Questions() {
                         </p>
 
                         <Button onClick={handleStartQuestions}>
-                            Start Practice
+                            Start Process
                         </Button>
                     </motion.div>
                 ) : (

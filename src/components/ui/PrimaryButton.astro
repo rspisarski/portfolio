@@ -2,6 +2,7 @@
 interface Props {
     href?: string;
     className?: string;
+    target?: string;
     variant?: 'primary' | 'success' | 'danger';
     size?: 'sm' | 'md' | 'lg';
 }
@@ -10,7 +11,8 @@ const {
     href, 
     className = '',
     variant = 'primary',
-    size = 'md'
+    size = 'md',
+    target = '_self'
 } = Astro.props;
 
 const baseStyles = "border rounded-md transition-colors duration-200";
@@ -38,6 +40,7 @@ href ? (
 <a
     href={href}
     class:list={[baseStyles, variants[variant], sizes[size], className]}
+    target={target}
 >
     <slot />
 </a>

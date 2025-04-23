@@ -203,8 +203,6 @@ export default function Questions() {
                     ) : (
                         <HiMenu className="w-6 h-6 text-brand-light-theme-text dark:text-brand-dark-theme-text" />
                     )}
-
-
                 </button>
             )}
 
@@ -326,12 +324,13 @@ export default function Questions() {
                 transition-[margin,width] duration-300
                 ${!showIntro ? 'md:ml-0 md:w-[calc(100%-340px)]' : 'w-full'}
                 w-full ml-0
+                pt-20 md:pt-6
             `}>
                 {showIntro ? (
                     <motion.div 
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
-                        className="w-full max-w-2xl mx-auto px-4 md:px-0 text-center py-12 flex flex-col items-center justify-center min-h-[calc(100vh-6rem)]"
+                        className="w-full max-w-2xl mx-auto px-4 md:px-0 text-center py-12 flex flex-col items-center justify-center min-h-[calc(100vh-8rem)]"
                     >
                         <h2 className="text-4xl font-bold mb-6">Let's get started!</h2>
                         <p className="text-xl mb-8 ">
@@ -356,7 +355,7 @@ export default function Questions() {
                                     x: { type: "spring", stiffness: 400, damping: 35 },
                                     opacity: { duration: 0.15 }
                                 }}
-                                className="w-full max-w-2xl mx-auto px-4 md:px-0 py-6 min-h-[calc(100vh-6rem)] flex flex-col justify-center"
+                                className="w-full max-w-2xl mx-auto px-4 md:px-0 py-6 min-h-[calc(100vh-8rem)] flex flex-col justify-center"
                             >
                                 <h2 className="text-2xl font-semibold mb-4 md:mb-6">{currentQuestion?.question}</h2>
                                 <p className="mb-6 md:mb-8">{currentQuestion?.answer}</p>

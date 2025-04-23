@@ -190,7 +190,7 @@ export default function Questions() {
     };
 
     return (
-        <div className="flex h-screen relative">
+        <div className="flex min-h-screen relative pb-10">
             {/* Only show mobile menu button after client-side hydration */}
             {isClient && (
                 <button
@@ -388,7 +388,7 @@ export default function Questions() {
                                                     <div key={index} className="py-4">
                                                         <div className="flex flex-col sm:flex-row sm:items-center">
                                                             <h4 className="font-medium text-base mb-3 sm:mb-0 sm:w-1/3">{project.title}</h4>
-                                                            <div className="flex flex-wrap gap-3 sm:w-2/3 sm:justify-end">
+                                                            <div className="flex flex-wrap gap-3 sm:w-2/3 sm:justify-end pr-2">
                                                                 <a 
                                                                     href={project.websiteUrl} 
                                                                     target="_blank" 

@@ -382,40 +382,46 @@ export default function Questions() {
                                 {currentQuestion?.projects && currentQuestion.projects.length > 0 && (
                                     <div className="mt-6 mb-8">
                                         <h3 className="text-lg font-medium mb-6">Project Examples</h3>
-                                        <div className="space-y-6">
-                                            {currentQuestion.projects.map((project, index) => (
-                                                <div key={index} className="flex items-center justify-between py-3">
-                                                    <h4 className="font-medium text-base">{project.title}</h4>
-                                                    <div className="flex gap-3">
-                                                        <a 
-                                                            href={project.websiteUrl} 
-                                                            target="_blank" 
-                                                            rel="noopener noreferrer"
-                                                            className="
-                                                                px-4 py-2 text-sm rounded-md transition-colors duration-200
-                                                                dark:bg-brand-dark-purple dark:border-brand-light-purple dark:text-brand-purple 
-                                                                bg-white border border-brand-light-purple text-brand-dark-purple 
-                                                                hover:bg-brand-purple hover:text-brand-dark-theme-text hover:border-brand-purple 
-                                                                dark:hover:bg-brand-purple dark:hover:text-brand-dark-theme-text dark:hover:border-brand-purple
-                                                            "
-                                                        >
-                                                            View Live
-                                                        </a>
-                                                        <a 
-                                                            href={project.projectUrl}
-                                                            className="
-                                                                px-4 py-2 text-sm rounded-md transition-colors duration-200
-                                                                dark:bg-brand-dark-purple dark:border-brand-light-purple dark:text-brand-purple 
-                                                                bg-white border border-brand-light-purple text-brand-dark-purple 
-                                                                hover:bg-brand-purple hover:text-brand-dark-theme-text hover:border-brand-purple 
-                                                                dark:hover:bg-brand-purple dark:hover:text-brand-dark-theme-text dark:hover:border-brand-purple
-                                                            "
-                                                        >
-                                                            Project Details
-                                                        </a>
+                                        <div className="rounded-md overflow-hidden">
+                                            <div className="divide-y divide-gray-200 dark:divide-brand-light-purple/20">
+                                                {currentQuestion.projects.map((project, index) => (
+                                                    <div key={index} className="py-4">
+                                                        <div className="flex flex-col sm:flex-row sm:items-center">
+                                                            <h4 className="font-medium text-base mb-3 sm:mb-0 sm:w-1/3">{project.title}</h4>
+                                                            <div className="flex flex-wrap gap-3 sm:w-2/3 sm:justify-end">
+                                                                <a 
+                                                                    href={project.websiteUrl} 
+                                                                    target="_blank" 
+                                                                    rel="noopener noreferrer"
+                                                                    className="
+                                                                        px-4 py-2 text-sm rounded-md transition-colors duration-200
+                                                                        dark:bg-brand-dark-purple dark:border-brand-light-purple dark:text-brand-purple 
+                                                                        bg-white border border-brand-light-purple text-brand-dark-purple 
+                                                                        hover:bg-brand-purple hover:text-brand-dark-theme-text hover:border-brand-purple 
+                                                                        dark:hover:bg-brand-purple dark:hover:text-brand-dark-theme-text dark:hover:border-brand-purple
+                                                                    "
+                                                                >
+                                                                    View Live
+                                                                </a>
+                                                                {'projectUrl' in project && project.projectUrl && (
+                                                                    <a 
+                                                                        href={project.projectUrl}
+                                                                        className="
+                                                                            px-4 py-2 text-sm rounded-md transition-colors duration-200
+                                                                            dark:bg-brand-dark-purple dark:border-brand-light-purple dark:text-brand-purple 
+                                                                            bg-white border border-brand-light-purple text-brand-dark-purple 
+                                                                            hover:bg-brand-purple hover:text-brand-dark-theme-text hover:border-brand-purple 
+                                                                            dark:hover:bg-brand-purple dark:hover:text-brand-dark-theme-text dark:hover:border-brand-purple
+                                                                        "
+                                                                    >
+                                                                        Project Details
+                                                                    </a>
+                                                                )}
+                                                            </div>
+                                                        </div>
                                                     </div>
-                                                </div>
-                                            ))}
+                                                ))}
+                                            </div>
                                         </div>
                                     </div>
                                 )}

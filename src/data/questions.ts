@@ -11,10 +11,17 @@ export const categories = [
                 order: 1,
                 projects: [
                     {
-                        title: "Customer Portal",
-                        websiteUrl: "https://example.com/portal",
-                        projectUrl: "/projects/customer-portal"
-                    }
+                        title: "Building Decarb",
+                        websiteUrl: "https://buildingdecarb.org"
+                    },
+                    {
+                        title: "Poulterra",
+                        websiteUrl: "https://poulterra.com",
+                    },
+                    {
+                        title: "Maryland University of Integrative Health",
+                        websiteUrl: "https://muih.edu",
+                    },
                 ]
             },
             {
@@ -31,10 +38,17 @@ export const categories = [
                 order: 3,
                 projects: [
                     {
-                        title: "Component Library",
-                        websiteUrl: "https://example.com/components",
-                        projectUrl: "/projects/component-library"
-                    }
+                        title: "Building Decarb",
+                        websiteUrl: "https://buildingdecarb.org"
+                    },
+                    {
+                        title: "Poulterra",
+                        websiteUrl: "https://poulterra.com",
+                    },
+                    {
+                        title: "Maryland University of Integrative Health",
+                        websiteUrl: "https://muih.edu",
+                    },
                 ]
             }
         ]
@@ -96,7 +110,16 @@ export const categories = [
                 question: "Explain how you'd build a modular component system in WordPress that could be shared across multiple brand sites.",
                 answer: "I'd implement a parent-child theme structure with ACF flexible content fields as the foundation for my component system. Each component would be built as a reusable module with standardized ACF fields for content, spacing, colors, and other brand-specific options. I'd create a single source of PHP template partials that handle the logic and structure, while allowing each brand to override specific styling through the child theme. This approach gives content editors a consistent interface across all brands while maintaining visual brand differentiation through controlled customization options.",
                 order: 2,
-                projects: []
+                projects: [
+                {
+                    title: "Maryland University of Integrative Health",
+                    websiteUrl: "https://muih.edu",
+                },
+                {
+                    title: "Natural Care Center",
+                    websiteUrl: "https://ncc.muih.edu",
+                }
+                ]
             },
             {
                 id: 'tech-3',

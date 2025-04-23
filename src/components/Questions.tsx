@@ -357,10 +357,10 @@ export default function Questions() {
                                 }}
                                 className="w-full max-w-2xl mx-auto px-4 md:px-0"
                             >
-                                <h2 className="text-2xl font-semibold mb-4">{currentQuestion?.question}</h2>
-                                <p className="mb-6">{currentQuestion?.answer}</p>
+                                <h2 className="text-2xl font-semibold mb-6">{currentQuestion?.question}</h2>
+                                <p className="mb-8">{currentQuestion?.answer}</p>
                                 
-                                <div className="flex gap-4">
+                                <div className="flex gap-4 mb-10">
                                     <Button
                                         onClick={() => handleRating(currentQuestion!.id, 'positive')}
                                         variant={questionStatuses[currentQuestion!.id]?.rating === 'positive' ? 'success' : 'primary'}
@@ -378,6 +378,47 @@ export default function Questions() {
                                         <span>Dislike</span>
                                     </Button>
                                 </div>
+                                
+                                {currentQuestion?.projects && currentQuestion.projects.length > 0 && (
+                                    <div className="mt-6 mb-8">
+                                        <h3 className="text-lg font-medium mb-6">Project Examples</h3>
+                                        <div className="space-y-6">
+                                            {currentQuestion.projects.map((project, index) => (
+                                                <div key={index} className="flex items-center justify-between py-3">
+                                                    <h4 className="font-medium text-base">{project.title}</h4>
+                                                    <div className="flex gap-3">
+                                                        <a 
+                                                            href={project.websiteUrl} 
+                                                            target="_blank" 
+                                                            rel="noopener noreferrer"
+                                                            className="
+                                                                px-4 py-2 text-sm rounded-md transition-colors duration-200
+                                                                dark:bg-brand-dark-purple dark:border-brand-light-purple dark:text-brand-purple 
+                                                                bg-white border border-brand-light-purple text-brand-dark-purple 
+                                                                hover:bg-brand-purple hover:text-brand-dark-theme-text hover:border-brand-purple 
+                                                                dark:hover:bg-brand-purple dark:hover:text-brand-dark-theme-text dark:hover:border-brand-purple
+                                                            "
+                                                        >
+                                                            View Live
+                                                        </a>
+                                                        <a 
+                                                            href={project.projectUrl}
+                                                            className="
+                                                                px-4 py-2 text-sm rounded-md transition-colors duration-200
+                                                                dark:bg-brand-dark-purple dark:border-brand-light-purple dark:text-brand-purple 
+                                                                bg-white border border-brand-light-purple text-brand-dark-purple 
+                                                                hover:bg-brand-purple hover:text-brand-dark-theme-text hover:border-brand-purple 
+                                                                dark:hover:bg-brand-purple dark:hover:text-brand-dark-theme-text dark:hover:border-brand-purple
+                                                            "
+                                                        >
+                                                            Project Details
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                            ))}
+                                        </div>
+                                    </div>
+                                )}
                             </motion.div>
                         )}
                     </AnimatePresence>

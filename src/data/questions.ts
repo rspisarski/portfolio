@@ -1,217 +1,101 @@
 export const categories = [
     { 
-        id: 'experience',
-        name: 'Experience',
+        id: 'wordpress',
+        name: 'WordPress Development',
         order: 1,
         questions: [
             {
-                id: 'exp-1',
-                question: "Describe your transition from WordPress to more modern front-end technologies.",
-                answer: "Your answer here...",
+                id: 'wp-1',
+                question: "Describe your experience with developing custom WordPress plugins and themes.",
+                answer: "I've developed numerous custom WordPress plugins and themes focused on creating reusable components that enhance site functionality. My approach emphasizes clean, maintainable code that separates concerns and follows WordPress best practices. I particularly enjoy building modular theme systems where components can be shared across different implementations while maintaining unique styling per brand.",
                 order: 1
             },
             {
-                id: 'exp-2',
-                question: "How do you handle tight deadlines and conflicting priorities?",
-                answer: "Your answer here...",
+                id: 'wp-2',
+                question: "What strategies do you use to optimize WordPress site performance?",
+                answer: "My performance optimization strategy includes implementing efficient database queries, setting up proper caching mechanisms (page, object, and browser caching), optimizing images through compression and lazy loading, minifying CSS/JS files, and leveraging CDNs. I regularly conduct performance audits to identify bottlenecks and implement solutions like critical CSS loading and deferred JavaScript execution.",
                 order: 2
             },
             {
-                id: 'exp-3',
-                question: "Tell me about a time you had to learn a new technology quickly.",
-                answer: "Your answer here...",
+                id: 'wp-3',
+                question: "How do you approach creating reusable components in WordPress?",
+                answer: "I leverage Advanced Custom Fields (ACF) to build reusable components through flexible content fields and repeaters. This approach allows me to create a consistent component library where each module has standardized settings for spacing, colors, and content options. By using ACF, I empower content editors to build pages with drag-and-drop simplicity while maintaining design consistency. The components remain flexible across different implementations while sharing a unified codebase and styling architecture.",
                 order: 3
+            }
+        ]
+    },
+    {
+        id: 'templates',
+        name: 'Templates & Data Management',
+        order: 2,
+        questions: [
+            {
+                id: 'temp-1',
+                question: "Explain your approach to creating versatile templates for landing pages.",
+                answer: "I develop templates with modular sections that can be mixed and matched based on campaign needs. Each template is built with conversion principles in mind—clear visual hierarchy, prominent CTAs, and appropriate whitespace. I implement a system of content fields that marketing teams can easily populate without touching code, while ensuring the design remains cohesive regardless of content length or image choices.",
+                order: 1
             },
             {
-                id: 'exp-4',
-                question: "How has your design background influenced your approach to front-end development?",
-                answer: "Your answer here...",
-                order: 4
+                id: 'temp-2',
+                question: "How do you handle data formatting for imports across multiple landing pages?",
+                answer: "I create standardized data structures with clear documentation on required fields and formats. For imports, I develop preprocessing scripts that validate and transform incoming data to match template requirements, handling edge cases like missing fields or oversized content. This approach allows marketing teams to work with familiar tools like spreadsheets while ensuring the data integrates seamlessly with our landing page system.",
+                order: 2
             },
             {
-                id: 'exp-5',
-                question: "What's your experience with component-based architecture?",
-                answer: "Your answer here...",
-                order: 5
+                id: 'temp-3',
+                question: "Describe your experience with building page import workflows.",
+                answer: "I've managed hundreds of locations and products through efficient CSV import processes. I create templated Excel sheets with clear formatting requirements and column structures that match our WordPress data model. This approach allows non-technical team members to maintain large datasets while ensuring data consistency. I implement server-side validation during imports to catch formatting errors and data inconsistencies, which significantly reduces post-import troubleshooting and maintenance requirements.",
+                order: 3
             }
         ]
     },
     {
         id: 'technical',
-        name: 'Technical Skills',
-        order: 2,
+        name: 'Technical Skills & SEO',
+        order: 3,
         questions: [
             {
                 id: 'tech-1',
-                question: "Explain the difference between `==` and `===` in JavaScript.",
-                answer: "Your answer here...",
+                question: "How do you implement SEO best practices in WordPress development?",
+                answer: "I integrate SEO throughout development with proper semantic HTML structure, optimized site architecture, mobile responsiveness, and clean URL structures. I implement schema markup for rich snippets, create XML sitemaps, and ensure technical SEO elements like minimized server response times and proper redirects are in place. When marketing teams provide SEO plans, I ensure their implementation is technically sound and follows best practices.",
                 order: 1
             },
             {
                 id: 'tech-2',
-                question: "Describe the concept of closures in JavaScript.",
-                answer: "Your answer here...",
+                question: "Explain how you'd build a modular component system in WordPress that could be shared across multiple brand sites.",
+                answer: "I'd implement a parent-child theme architecture with a custom plugin containing shared functionality. Components would be developed as Gutenberg blocks with configuration options for brand-specific styling. I'd create a centralized asset management system to prevent duplication while allowing for brand-specific overrides, and use custom post types with standardized meta fields to ensure data consistency while maintaining flexibility.",
                 order: 2
             },
             {
                 id: 'tech-3',
-                question: "What are the benefits of using React or similar frameworks over vanilla JavaScript?",
-                answer: "Your answer here...",
+                question: "What methods do you use to ensure cross-browser compatibility and responsive design?",
+                answer: "I follow mobile-first methodology with fluid layouts and flexible grids. I implement progressive enhancement, starting with solid HTML and adding features based on browser support. I use feature detection rather than browser detection, set breakpoints based on content rather than devices, and test extensively across browser matrices. For complex interfaces, I create component-specific responsive behaviors rather than relying solely on global breakpoints.",
                 order: 3
-            },
-            {
-                id: 'tech-4',
-                question: "Explain how you'd implement responsive design without using a framework.",
-                answer: "Your answer here...",
-                order: 4
-            },
-            {
-                id: 'tech-5',
-                question: "How do you optimize a slow-performing web application?",
-                answer: "Your answer here...",
-                order: 5
-            },
-            {
-                id: 'tech-6',
-                question: "Describe your experience with CSS preprocessors and which one you prefer.",
-                answer: "Your answer here...",
-                order: 6
-            },
-            {
-                id: 'tech-7',
-                question: "How would you manage state in a complex React application?",
-                answer: "Your answer here...",
-                order: 7
-            }
-        ]
-    },
-    {
-        id: 'work',
-        name: 'Work Process',
-        order: 3,
-        questions: [
-            {
-                id: 'work-1',
-                question: "Describe your approach to testing front-end code.",
-                answer: "Your answer here...",
-                order: 1
-            },
-            {
-                id: 'work-2',
-                question: "How do you handle code reviews and provide constructive feedback?",
-                answer: "Your answer here...",
-                order: 2
-            },
-            {
-                id: 'work-3',
-                question: "Walk me through your development process from receiving a design to deploying the finished product.",
-                answer: "Your answer here...",
-                order: 3
-            },
-            {
-                id: 'work-4',
-                question: "How do you approach debugging complex front-end issues?",
-                answer: "Your answer here...",
-                order: 4
-            }
-        ]
-    },
-    {
-        id: 'background',
-        name: 'Background',
-        order: 4,
-        questions: [
-            {
-                id: 'background-1',
-                question: "What are your favorite resources for staying up-to-date with the latest frontend technologies?",
-                answer: "Your answer here...",
-                order: 1
-            },
-            {
-                id: 'background-2',
-                question: "What personal projects have you worked on recently?",
-                answer: "Your answer here...",
-                order: 2
-            },
-            {
-                id: 'background-3',
-                question: "How has your design degree influenced your approach to front-end development?",
-                answer: "Your answer here...",
-                order: 3
-            },
-            {
-                id: 'background-4',
-                question: "What motivated you to transition from WordPress to JavaScript frameworks?",
-                answer: "Your answer here...",
-                order: 4
             }
         ]
     },
     {
         id: 'collaboration',
-        name: 'Collaboration',
-        order: 5,
+        name: 'Collaboration & Process',
+        order: 4,
         questions: [
             {
-                id: 'collaboration-1',
-                question: "Describe a time you had to work with a difficult team member.",
-                answer: "Your answer here...",
+                id: 'collab-1',
+                question: "How do you collaborate with marketing teams to implement their analytics requirements?",
+                answer: "I work closely with marketing teams to understand their analytics needs and implement their tracking plans accurately. This involves setting up event tracking, conversion goals, and custom dimensions in various analytics platforms. I ensure proper data layer implementation for tag management systems, verify tracking accuracy through testing, and document implementation details so marketing teams can confidently analyze the data they receive.",
                 order: 1
             },
             {
-                id: 'collaboration-2',
-                question: "How do you communicate technical concepts to non-technical stakeholders?",
-                answer: "Your answer here...",
+                id: 'collab-2',
+                question: "Describe your approach to receiving and implementing design feedback for web projects.",
+                answer: "I approach design feedback collaboratively while working within established brand guidelines. When feedback is provided, I implement the requested changes efficiently, but if I notice potential conflicts with brand standards, I address these concerns constructively. I focus on maintaining a collaborative approach with clients and team members to ensure landing pages maintain brand consistency while meeting specific project goals. This balance between accommodating feedback and preserving brand integrity leads to both client satisfaction and cohesive design outcomes.",
                 order: 2
             },
             {
-                id: 'collaboration-3',
-                question: "How do you handle disagreements about technical decisions?",
-                answer: "Your answer here...",
+                id: 'collab-3',
+                question: "How do you manage multiple web development projects simultaneously while meeting deadlines?",
+                answer: "I use project management tools to track tasks and dependencies, implement time blocking for focused development work, and maintain detailed documentation to minimize context-switching. I prioritize based on both urgency and impact, identify potential bottlenecks early, and communicate proactively about timeline adjustments when necessary. I've developed reusable code libraries to accelerate common development tasks while maintaining quality.",
                 order: 3
-            },
-            {
-                id: 'collaboration-4',
-                question: "How do you collaborate with designers to ensure successful implementation of UI/UX?",
-                answer: "Your answer here...",
-                order: 4
-            }
-        ]
-    },
-    {
-        id: 'frameworks',
-        name: 'JavaScript Frameworks',
-        order: 6,
-        questions: [
-            {
-                id: 'frameworks-1',
-                question: "Compare React, Vue, and Angular. Which do you prefer and why?",
-                answer: "Your answer here...",
-                order: 1
-            },
-            {
-                id: 'frameworks-2',
-                question: "Explain the concept of virtual DOM and its benefits.",
-                answer: "Your answer here...",
-                order: 2
-            },
-            {
-                id: 'frameworks-3',
-                question: "How do you handle routing in a single-page application?",
-                answer: "Your answer here...",
-                order: 3
-            },
-            {
-                id: 'frameworks-4',
-                question: "Describe your experience with Next.js or similar meta-frameworks.",
-                answer: "Your answer here...",
-                order: 4
-            },
-            {
-                id: 'frameworks-5',
-                question: "How do you approach learning a new JavaScript framework?",
-                answer: "Your answer here...",
-                order: 5
             }
         ]
     }

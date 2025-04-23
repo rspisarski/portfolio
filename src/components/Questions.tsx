@@ -47,6 +47,7 @@ export default function Questions() {
         transition-transform duration-300
         ${!isClient ? '-translate-x-full' : ''} // Hide by default until client-side JS runs
         ${isMobileMenuOpen ? 'translate-x-0' : '-translate-x-full'}
+        ${isMobile ? 'max-h-screen pb-20' : ''}
     `;
 
     // Load saved statuses and determine if intro should be shown
@@ -190,7 +191,7 @@ export default function Questions() {
     };
 
     return (
-        <div className="flex min-h-screen relative py-10">
+        <div className="flex min-h-screen relative">
             {/* Only show mobile menu button after client-side hydration */}
             {isClient && (
                 <button
@@ -320,7 +321,7 @@ export default function Questions() {
 
             {/* Main Content */}
             <main className={`
-                flex-1 flex-col h-screen overflow-y-auto p-8 
+                flex-1 min-h-screen overflow-y-auto px-4 py-6 md:p-8
                 flex items-center justify-center relative
                 transition-[margin,width] duration-300
                 ${!showIntro ? 'md:ml-0 md:w-[calc(100%-340px)]' : 'w-full'}
@@ -330,7 +331,7 @@ export default function Questions() {
                     <motion.div 
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
-                        className="w-full max-w-2xl mx-auto px-4 md:px-0 text-center"
+                        className="w-full max-w-2xl mx-auto px-4 md:px-0 text-center py-12 flex flex-col items-center justify-center min-h-[calc(100vh-6rem)]"
                     >
                         <h2 className="text-4xl font-bold mb-6">Let's get started!</h2>
                         <p className="text-xl mb-8 ">
@@ -355,10 +356,10 @@ export default function Questions() {
                                     x: { type: "spring", stiffness: 400, damping: 35 },
                                     opacity: { duration: 0.15 }
                                 }}
-                                className="w-full max-w-2xl mx-auto px-4 md:px-0"
+                                className="w-full max-w-2xl mx-auto px-4 md:px-0 py-6 min-h-[calc(100vh-6rem)] flex flex-col justify-center"
                             >
-                                <h2 className="text-2xl font-semibold mb-6">{currentQuestion?.question}</h2>
-                                <p className="mb-8">{currentQuestion?.answer}</p>
+                                <h2 className="text-2xl font-semibold mb-4 md:mb-6">{currentQuestion?.question}</h2>
+                                <p className="mb-6 md:mb-8">{currentQuestion?.answer}</p>
                                 
                                 <div className="flex gap-4 mb-10">
                                     <Button

@@ -190,7 +190,7 @@ export default function Questions() {
     };
 
     return (
-        <div className="flex min-h-screen relative pb-10">
+        <div className="flex min-h-screen relative py-10">
             {/* Only show mobile menu button after client-side hydration */}
             {isClient && (
                 <button

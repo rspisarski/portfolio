@@ -1,47 +1,42 @@
-collections:
+content:
   - name: projects
     label: Projects
+    type: collection
     path: src/content/projects
-    format: md
+    view:
+      fields: [title, published, order]
     fields:
       - name: title
         label: Title
         type: string
-        required: true
       
       - name: skills
         label: Skills
         type: list
-        required: true
         items:
           type: string
       
       - name: image
         label: Image
         type: string
-        required: true
         description: Path to the project image
       
       - name: link
         label: Project Link
         type: string
-        required: false
-        description: External link to the project
+        description: External link to the project (optional)
       
       - name: order
         label: Display Order
         type: number
-        required: true
         description: Order in which the project appears
       
       - name: published
         label: Published
         type: boolean
-        required: true
         default: false
       
       - name: github
         label: GitHub Repository
         type: string
-        required: false
-        description: Link to GitHub repository
+        description: Link to GitHub repository (optional)

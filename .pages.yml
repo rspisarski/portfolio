@@ -1,4 +1,6 @@
-media: public/images
+media: 
+  input: public/images/projects
+  output: /images/projects
 content:
   - name: projects
     label: Projects
@@ -21,8 +23,6 @@ content:
         label: Image
         type: image
         description: Path to the project image
-        options:
-          path: public/images/projects/
       
       - name: link
         label: Project Link

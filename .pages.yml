@@ -1,3 +1,4 @@
+media: public/images
 content:
   - name: projects
     label: Projects
@@ -20,6 +21,8 @@ content:
         label: Image
         type: image
         description: Path to the project image
+        options:
+          path: projects
       
       - name: link
         label: Project Link

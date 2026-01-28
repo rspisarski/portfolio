@@ -15,9 +15,8 @@ content:
       
       - name: skills
         label: Skills
-        type: list
-        items:
-          type: string
+        type: string
+        list: true
       
       - name: image
         label: Image

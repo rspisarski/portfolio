@@ -22,7 +22,7 @@ content:
         type: image
         description: Path to the project image
         options:
-          path: projects
+          path: public/images/projects/
       
       - name: link
         label: Project Link

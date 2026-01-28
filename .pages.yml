@@ -18,12 +18,12 @@ content:
       
       - name: image
         label: Image
-        type: string
+        type: image
         description: Path to the project image
       
       - name: link
         label: Project Link
-        type: image
+        type: string
         description: External link to the project (optional)
       
       - name: order

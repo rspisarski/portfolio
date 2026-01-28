@@ -23,7 +23,7 @@ content:
       
       - name: link
         label: Project Link
-        type: string
+        type: image
         description: External link to the project (optional)
       
       - name: order

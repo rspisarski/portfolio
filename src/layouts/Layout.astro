@@ -2,8 +2,20 @@
 import { ThemeScript } from 'astro-theme-toggle';
 import { Toggle } from 'astro-theme-toggle'
 import { ClientRouter } from 'astro:transitions';
-import ContactInfo from '../components/ContactInfo.astro';
-import Footer from '../components/Footer.astro';
+
+interface Props {
+	title?: string;
+	description?: string;
+}
+
+const {
+	title: titleSegment,
+	description = 'Portfolio of Richard Pisarski, a frontend developer in the Detroit metropolitan area.',
+} = Astro.props as Props;
+
+const documentTitle = titleSegment
+	? `${titleSegment} | Richard Pisarski`
+	: 'Richard Pisarski | Frontend Developer';
 ---
 
 <!doctype html>
@@ -14,13 +26,20 @@ import Footer from '../components/Footer.astro';
 		<meta name="viewport" content="width=device-width" />
 		<link rel="icon" type="image/png" href="/favicon.png" />
 		<meta name="generator" content={Astro.generator} />
+		<meta name="description" content={description} />
 		<link rel="preconnect" href="https://fonts.googleapis.com" />
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 		<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet" />
-		<title>Richard Pisarski | Frontend Developer</title>
+		<title>{documentTitle}</title>
 		<ThemeScript />
 	</head>
 	<body class="dark:bg-brand-dark-theme-bg dark:text-brand-dark-theme-text bg-brand-light-theme-bg text-brand-light-theme-text">
+		<a
+			href="#main-content"
+			class="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[100] focus:rounded-md focus:px-4 focus:py-3 focus:shadow-lg focus:outline-none focus:ring-4 focus:ring-brand-purple focus:ring-offset-2 focus:ring-offset-brand-light-theme-bg dark:focus:ring-offset-brand-dark-theme-bg dark:bg-brand-dark-purple dark:text-brand-dark-theme-text bg-white text-brand-light-theme-text font-medium"
+		>
+			Skip to main content
+		</a>
 		<div class="absolute top-8 right-8 z-50">
 			<Toggle style="width: 32px; height: 32px;" />
 		</div>
@@ -48,6 +67,21 @@ import Footer from '../components/Footer.astro';
 		/* background: -webkit-linear-gradient(to right, #250544, #18012c); 
 		background: linear-gradient(to right, #250544, #18012c);  */
 		color: var(--brand--dark-theme-text);
+	}
+
+	/* Keyboard focus: high-contrast ring + offset (applies across light/dark) */
+	:focus-visible {
+		outline: 3px solid #9b43dd;
+		outline-offset: 3px;
+	}
+
+	[data-theme="dark"] :focus-visible {
+		outline-color: #f0d4ff;
+		outline-offset: 3px;
+	}
+
+	:focus:not(:focus-visible) {
+		outline: none;
 	}
 
 </style>

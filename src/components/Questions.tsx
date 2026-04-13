@@ -124,6 +124,15 @@ export default function Questions() {
         return () => window.removeEventListener('resize', checkMobile);
     }, []);
 
+    useEffect(() => {
+        if (!isMobileMenuOpen) return;
+        const onKeyDown = (e: KeyboardEvent) => {
+            if (e.key === 'Escape') setIsMobileMenuOpen(false);
+        };
+        window.addEventListener('keydown', onKeyDown);
+        return () => window.removeEventListener('keydown', onKeyDown);
+    }, [isMobileMenuOpen]);
+
     // Start the questions when intro is dismissed
     const handleStartQuestions = () => {
         setCurrentQuestionId(allQuestions[0].id);
@@ -195,13 +204,17 @@ export default function Questions() {
             {/* Only show mobile menu button after client-side hydration */}
             {isClient && (
                 <button
+                    type="button"
                     onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
                     className="fixed top-4 left-4 z-50 p-2 bg-brand-dark-theme-bg/10 dark:bg-brand-purple/10 backdrop-blur-sm rounded-md md:hidden"
+                    aria-expanded={isMobileMenuOpen}
+                    aria-controls={showIntro ? undefined : 'questions-nav'}
+                    aria-label={isMobileMenuOpen ? 'Close question navigation' : 'Open question navigation'}
                 >
                     {isMobileMenuOpen ? (
-                        <HiX className="w-6 h-6 text-brand-light-theme-text dark:text-brand-dark-theme-text" />
+                        <HiX className="w-6 h-6 text-brand-light-theme-text dark:text-brand-dark-theme-text" aria-hidden />
                     ) : (
-                        <HiMenu className="w-6 h-6 text-brand-light-theme-text dark:text-brand-dark-theme-text" />
+                        <HiMenu className="w-6 h-6 text-brand-light-theme-text dark:text-brand-dark-theme-text" aria-hidden />
                     )}
                 </button>
             )}
@@ -211,12 +224,16 @@ export default function Questions() {
                 <div 
                     className="fixed inset-0 bg-brand-dark-purple/20 backdrop-blur-sm z-30 md:hidden"
                     onClick={() => setIsMobileMenuOpen(false)}
+                    role="presentation"
+                    aria-hidden="true"
                 />
             )}
             
             {/* Sidebar Navigation - Only show when not in intro */}
             {!showIntro && (
                 <motion.nav 
+                    id="questions-nav"
+                    aria-label="Interview questions"
                     className={mobileMenuClasses}
                     initial={false}
                     animate={{ 
@@ -243,17 +260,23 @@ export default function Questions() {
                             {categories.map((category) => (
                                 <div key={category.id} className="space-y-2">
                                     <button 
+                                        type="button"
                                         onClick={() => toggleCategory(category.id)}
                                         className="dark:text-brand-dark-theme-text/80 dark:hover:text-brand-dark-theme-text/90 text-brand-light-theme-text hover:text-brand-light-theme-text/90  font-bold flex items-center w-full  transition-colors"
+                                        aria-expanded={isCategoryOpen(category.id)}
+                                        aria-controls={`category-panel-${category.id}`}
                                     >
-                                        <span className="mr-2">
+                                        <span className="mr-2" aria-hidden="true">
                                             {isCategoryOpen(category.id) ? '▼' : '▶'}
 
                                         </span>
                                         {category.name}
                                     </button>
                                     
-                                    <ul className={`space-y-2 pl-8 border-l dark:border-white/20 border-black/10 overflow-hidden transition-all duration-300 ${
+                                    <ul
+                                        id={`category-panel-${category.id}`}
+                                        aria-hidden={!isCategoryOpen(category.id)}
+                                        className={`space-y-2 pl-8 border-l dark:border-white/20 border-black/10 overflow-hidden transition-all duration-300 ${
                                         isCategoryOpen(category.id) ? 'max-h-[1000px] opacity-100' : 'max-h-0 opacity-0'
                                     }`}>
                                         {category.questions.map((question) => {
@@ -274,6 +297,7 @@ export default function Questions() {
                                                         />
                                                     </div>
                                                     <button
+                                                        type="button"
                                                         onClick={() => handleQuestionChange(question.id)}
                                                         className={`text-xs text-left w-full ${
                                                             currentQuestionId === question.id
@@ -318,10 +342,14 @@ export default function Questions() {
             )}
 
             {/* Main Content */}
-            <main className={`
+            <main
+                id="main-content"
+                tabIndex={-1}
+                className={`
                 flex-1 min-h-screen overflow-y-auto px-4 py-6 md:p-8
                 flex items-center justify-center relative
                 transition-[margin,width] duration-300
+                outline-none
                 ${!showIntro ? 'md:ml-0 md:w-[calc(100%-340px)]' : 'w-full'}
                 w-full ml-0
                 pt-20 md:pt-6

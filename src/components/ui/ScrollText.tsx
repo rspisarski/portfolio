@@ -24,7 +24,8 @@ export default function ScrollText({ text }: ScrollTextProps) {
     return (
         <motion.div
             ref={containerRef}
-            className="absolute top-[-10px] text-[80px] md:text-[132px] font-bold text-brand-light-purple dark:text-brand-light-purple whitespace-nowrap z-0 overflow-x-hidden"
+            aria-hidden="true"
+            className="pointer-events-none absolute top-[-10px] text-[80px] md:text-[132px] font-bold text-brand-light-purple dark:text-brand-light-purple whitespace-nowrap z-0 overflow-x-hidden"
             style={{ x, opacity }}
         >
             {text}

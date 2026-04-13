@@ -32,11 +32,14 @@ const { project } = Astro.props as { project: Project };
 const { Content } = await project.render();
 
 ---
-<Layout title={project.data.title}>
-    <main class="max-w-screen-lg mx-auto px-4 py-12">
+<Layout
+    title={project.data.title}
+    description={`Project write-up: ${project.data.title}. Skills: ${project.data.skills.join(', ')}.`}
+>
+    <main id="main-content" tabindex="-1" class="max-w-screen-lg mx-auto px-4 py-12 outline-none">
     
         <div class="mb-12">
-            <a href="/" class="text-sm text-brand-light-purple dark:text-brand-purple hover:text-brand-purple dark:hover:text-brand-light-purple inline-flex flex-row items-center gap-2 scale-100 hover:scale-105 transition-all duration-300"><AiOutlineRollback /> Go Back</a>
+            <a href="/" class="text-sm text-brand-light-purple dark:text-brand-purple hover:text-brand-purple dark:hover:text-brand-light-purple inline-flex flex-row items-center gap-2 scale-100 hover:scale-105 transition-all duration-300 rounded-sm"><AiOutlineRollback aria-hidden="true" /> <span>Go back home</span></a>
         </div>
 
 
@@ -45,11 +48,11 @@ const { Content } = await project.render();
             <div class="flex items-center gap-3">
                 {project.data.github && (
                     <div class="flex gap-2">
-                        <a href={`https://github.com/${project.data.github}`} target="_blank" rel="noopener noreferrer">
-                            <img src={`https://img.shields.io/github/stars/${project.data.github}.svg`} alt="GitHub stars" />
+                        <a href={`https://github.com/${project.data.github}`} target="_blank" rel="noopener noreferrer" aria-label={`${project.data.title} on GitHub (stars badge)`} class="rounded-sm">
+                            <img src={`https://img.shields.io/github/stars/${project.data.github}.svg`} alt="" />
                         </a>
-                        <a href={`https://github.com/${project.data.github}/fork`} target="_blank" rel="noopener noreferrer">
-                            <img src={`https://img.shields.io/github/forks/${project.data.github}.svg`} alt="GitHub forks" />
+                        <a href={`https://github.com/${project.data.github}/fork`} target="_blank" rel="noopener noreferrer" aria-label={`${project.data.title} on GitHub (forks badge)`} class="rounded-sm">
+                            <img src={`https://img.shields.io/github/forks/${project.data.github}.svg`} alt="" />
                         </a>
                     </div>
                 )}

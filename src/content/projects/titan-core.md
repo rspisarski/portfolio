@@ -5,7 +5,7 @@ skills: ["Astro", "Tailwind CSS", "Branding"]
 image: "/images/projects/titan-core.jpg"
 order: 2
 github: "rspisarski/titan-core"
-link: "https://titan-core.netlify.app"
+link: "https://titan-core.netlify.app/"
 ---
 
 ## Project Overview

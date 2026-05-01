@@ -1,7 +1,7 @@
 ---
 published: true
 title: "Conscious Compass"
-skills: ["WordPress", "Next.js", "Tailwind CSS", "Supabase", "GSAP", "Smartsheet"]
+skills: ["Next.js", "Tailwind CSS", "Supabase", "GSAP", "Smartsheet"]
 image: "/images/projects/cc.png"
 order: 1
 ---

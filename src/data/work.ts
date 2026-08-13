@@ -1,9 +1,17 @@
 export const jobs = [
     {
+        title: "Developer",
+        company: "ModMed",
+        location: "Boca Raton, FL",
+        date: "June 2026 - Present",
+        description: "Developing cloud-based healthcare software for specialty medical practices, building features and integrations for the EMA EHR and practice management platform.",
+        logo: "/images/work/modmed.png",
+    },
+    {
         title: "Senior WordPress Developer",
         company: "Antenna Group",
         location: "Hackensack, NJ",
-        date: "March 2020 - Present",
+        date: "March 2020 - June 2026",
         description: "Led WordPress development initiatives, creating custom themes and a documented integration system. Spearheaded the development of a full-stack sales qualification tool using Next.js and Supabase, featuring comprehensive workflow management and admin capabilities. Implemented secure API integrations and responsive interfaces using modern technologies like Tailwind CSS.",
         logo: "/images/work/antenna_group_logo.jpg",
     },

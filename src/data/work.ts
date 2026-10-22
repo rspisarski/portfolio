@@ -1,6 +1,6 @@
 export const jobs = [
     {
-        title: "Developer",
+        title: "Creative Developer",
         company: "ModMed",
         location: "Boca Raton, FL",
         date: "June 2026 - Present",
